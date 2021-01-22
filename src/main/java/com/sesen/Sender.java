@@ -20,11 +20,11 @@ public class Sender {
 	private static RandomAccessFile FILE;
 
 	public static void main(String[] args) {
-		Properties properties= new Properties();       
+	     
         try {
 			
-        	properties.load(new FileInputStream(new File("../rabbit-mq/src/main/java/com/sesen/configuracion.properties")));
-        	
+        	Properties properties= new Properties();  
+        	properties.load(new FileInputStream(new File("../rabbit-mq/src/main/java/com/sesen/configuracion.properties")));      	
         	HOST=  properties.getProperty("HOST");
         	QUEUE_NAME=  properties.getProperty("QUEUE_NAME");
             ROUTE_FILE=  properties.getProperty("ROUTE_FILE");
@@ -39,21 +39,23 @@ public class Sender {
 		    FILE = new RandomAccessFile(ROUTE_FILE+INPUT_FILE, "r");			
 			String str;
 
-			while ((str = FILE.readLine()) != null) {
+			while ((str = FILE.readLine()) != null) 
+			{
 			    															 
-                if (!getPERMISSION(str).equals(IGNORE_PERMISSION)) {
+                if (!getPERMISSION(str).equals(IGNORE_PERMISSION)) 
+                {
           		    channel1.basicPublish("", QUEUE_NAME, false, null, str.getBytes());
           		    System.out.println("Enviado " +str);
           		    
                 }
-                }
+            }
 			FILE.close();
 			channel1.close();
 			connection.close();
 			
-	} catch (IOException | TimeoutException e) {
-		e.printStackTrace();
-	}
+        } catch (IOException | TimeoutException e) {
+        	e.printStackTrace();
+        }
 
 	}
 	public static String getPERMISSION(String str) {
