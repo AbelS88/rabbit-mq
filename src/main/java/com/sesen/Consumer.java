@@ -3,7 +3,6 @@ package com.sesen;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class Consumer {
 	private static String HOST;
 	private static String ROUTE_FILE;
 	private static String MAX_TICKS;
-	
+
 	private static int ticks;
 	private static HashMap <String, Object> map = new HashMap <String, Object> ();
 	private static List<String> listA  = new ArrayList<>();
@@ -43,6 +42,7 @@ public class Consumer {
 			HOST=  properties.getProperty("HOST");
 			ROUTE_FILE=  properties.getProperty("ROUTE_FILE");
 			MAX_TICKS=  properties.getProperty("MAX_TICKS");
+
       
         	ConnectionFactory factory = new ConnectionFactory();
         	factory.setHost(HOST);
@@ -83,7 +83,6 @@ public class Consumer {
     	     map.put("533_E:MSFT_TR",listC);    		    	    	
     	     ticks=generateFiles(ticks,map);
     	     break;
-
     	}
   
     }
@@ -129,12 +128,12 @@ public class Consumer {
 			Map.Entry e = (Map.Entry)it.next();  		    
 		    @SuppressWarnings("unchecked")
 			List<String> list  = (List<String>) e.getValue();
-		    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(ROUTE_FILE+e.getKey()+".txt", true));
+		    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(ROUTE_FILE+e.getKey()+".1.txt", true));
 		    for (int i=0;i<list.size();i++) {    		        
 		        bufferedWriter.append(list.get(i));
 		        bufferedWriter.newLine();
 		      }
-	        //bufferedWriter.close();
+	        bufferedWriter.close();
 		}
 	}
     
