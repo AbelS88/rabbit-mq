@@ -32,7 +32,6 @@ public class Sender {
             IGNORE_PERMISSION=properties.getProperty("IGNORE_PERMISSION");
             
             ConnectionFactory factory= new ConnectionFactory();
-        	factory.setHost(HOST);
 			Connection connection = factory.newConnection();
 			Channel channel1 = connection.createChannel();	
 		    channel1.queueDeclare(QUEUE_NAME, false, false, false, null);

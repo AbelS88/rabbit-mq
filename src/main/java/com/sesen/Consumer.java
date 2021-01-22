@@ -82,6 +82,7 @@ public class Consumer {
      		 listC.add("ID:"+id +" | SYMBOL.TICKER:E:MSFT | CURRENT.PRICE: "+getPRICE(msg));
     	     map.put("533_E:MSFT_TR",listC);    		    	    	
     	     ticks=generateFiles(ticks,map);
+    	     break;
 
     	}
   
@@ -132,9 +133,8 @@ public class Consumer {
 		    for (int i=0;i<list.size();i++) {    		        
 		        bufferedWriter.append(list.get(i));
 		        bufferedWriter.newLine();
-
 		      }
-	        bufferedWriter.close();
+	        //bufferedWriter.close();
 		}
 	}
     
