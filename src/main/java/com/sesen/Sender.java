@@ -23,7 +23,7 @@ public class Sender {
 		Properties properties= new Properties();       
         try {
 			
-        	properties.load(new FileInputStream(new File("../rabbitmq/src/main/java/com/sesen/configuracion.properties")));
+        	properties.load(new FileInputStream(new File("../rabbit-mq/src/main/java/com/sesen/configuracion.properties")));
         	
         	HOST=  properties.getProperty("HOST");
         	QUEUE_NAME=  properties.getProperty("QUEUE_NAME");

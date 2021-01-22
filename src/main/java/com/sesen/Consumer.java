@@ -37,7 +37,7 @@ public class Consumer {
     	
     	Properties properties= new Properties();       
         try {
-			properties.load(new FileInputStream(new File("../rabbitmq/src/main/java/com/sesen/configuracion.properties")));
+			properties.load(new FileInputStream(new File("../rabbit-mq/src/main/java/com/sesen/configuracion.properties")));
 		
 			QUEUE_NAME=  properties.getProperty("QUEUE_NAME");
 			HOST=  properties.getProperty("HOST");
